@@ -79,7 +79,10 @@ module.exports = {
             })
           : res.json({ message: "Thought successfully deleted!" })
       )
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        console.log(err)
+        res.status(500).json(err)
+    });
   },
   // Adds a reaction to a thought. This method is unique in that we add the entire body of the tag rather than the ID with the mongodb $addToSet operator.
   createReaction(req, res) {
